@@ -1,0 +1,11 @@
+.filter-input {
+  border-color: rgb(177, 173, 173);
+  width: 250px;
+}
+.filter-label {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  gap: 15px;
+  font-size: 20px;
+}

@@ -1,0 +1,12 @@
+.elements {
+  font-size: 20px;
+}
+.elements-button {
+  border-radius: 5px;
+  margin-left: 10px;
+  font-style: 18px;
+}
+.elements-button:hover {
+  cursor: pointer;
+  background-color: blue;
+}
