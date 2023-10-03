@@ -1,18 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, Navigate } from 'react-router-dom';
+import { selectIsAuthenticated } from '../../Redux/selectors';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+} from '../../Redux/Operation';
 
 export default function PrivateRoutes() {
-  //const isAuth = useSelector();
+  const isAuth = useSelector(selectIsAuthenticated);
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (isAuth) {
-  //     dispatch(());
-  //     dispatch(());
-  //  }
-  // }, [isAuth, dispatch]);
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(fetchContacts());
+      dispatch(addContact());
+      dispatch(deleteContact());
+    }
+  }, [isAuth, dispatch]);
 
-  //  return isAuth ? <Outlet /> : <Navigate to="/" />;
+  return isAuth ? <Outlet /> : <Navigate to="/" />;
 }

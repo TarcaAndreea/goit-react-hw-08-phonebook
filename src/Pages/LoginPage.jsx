@@ -41,7 +41,7 @@ export default function Loginpage() {
   };
 
   useEffect(() => {
-    if (isAuth) navigate('/contacts');
+    if (isAuth) navigate('/UserMenu');
   }, [isAuth, navigate]);
   const handleLogoutClick = () => {
     navigate('/');

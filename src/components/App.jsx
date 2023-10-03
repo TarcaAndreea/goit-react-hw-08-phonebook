@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 
 import { store } from 'Redux/store';
 import HomePage from '../Pages/HomePage';
@@ -19,7 +19,6 @@ export const App = () => {
           alignItems: 'center',
         }}
       >
-        {' '}
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />

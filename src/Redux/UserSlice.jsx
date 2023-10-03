@@ -16,6 +16,14 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
+    [register.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [register.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
     [login.fulfilled](state, action) {
       state.user = action.payload;
       state.isAuthenticated = true;
