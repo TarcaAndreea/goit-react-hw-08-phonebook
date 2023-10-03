@@ -9,6 +9,10 @@ const store = configureStore({
     filter: filterReducer,
     user: userReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export { store };

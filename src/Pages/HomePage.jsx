@@ -29,7 +29,12 @@ export default function HomePage() {
         <Typography
           variant="h1"
           component="h2"
-          sx={{ margin: 'auto', paddingTop: '160px' }}
+          sx={{
+            margin: 'auto',
+            paddingTop: '160px',
+            color: 'gray',
+            paddingLeft: '50px',
+          }}
         >
           Welcome!
         </Typography>{' '}
@@ -37,16 +42,19 @@ export default function HomePage() {
       <Box
         sx={{
           display: 'flex',
-          alignItems: 'center',
-          textAlign: 'center',
+
+          gap: '30px',
         }}
       >
         <Typography
           onClick={handleRegisterClick}
           sx={{
             minWidth: 200,
-            boxShadow:
-              ' rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
+            padding: '20px',
+            height: '50px',
+            fontSize: '40px',
+            color: 'white',
+            textAlign: 'center',
           }}
         >
           Register
@@ -55,11 +63,14 @@ export default function HomePage() {
           onClick={handleLoginClick}
           sx={{
             minWidth: 200,
-            boxShadow:
-              ' rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
+            fontSize: '40px',
+            height: '50px',
+            padding: '20px',
+            color: 'white',
+            textAlign: 'center',
           }}
         >
-          Login
+          Log In
         </Typography>
       </Box>
     </Container>

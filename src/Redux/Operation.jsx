@@ -53,7 +53,13 @@ export const register = createAsyncThunk(
         user.email,
         user.password
       );
-      return response.user;
+
+      const userData = {
+        uid: response.user.uid,
+        email: response.user.email,
+      };
+
+      return userData;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -67,11 +73,9 @@ export const login = createAsyncThunk('user/login', async (user, thunkAPI) => {
       user.password
     );
 
-    // Extrage doar informațiile necesare și serializabile
     const userData = {
       uid: response.user.uid,
       email: response.user.email,
-      // Adaugă alte câmpuri aici, dacă este necesar
     };
 
     return userData;

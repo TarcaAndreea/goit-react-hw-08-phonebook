@@ -27,7 +27,7 @@ export default function RegisterPage() {
     event.preventDefault();
     dispatch(register({ email: email, password: password }));
   };
-  console.log(register);
+  console.log(email, password);
   useEffect(() => {
     if (isAuth) navigate('/login');
   }, [isAuth, navigate]);
@@ -37,7 +37,7 @@ export default function RegisterPage() {
       onSubmit={handleSubmit}
       component="form"
       sx={{
-        margin: 'auto',
+        marginTop: '20%',
         width: '100%',
         maxWidth: '300px',
         backgroundColor: 'white',
@@ -46,6 +46,7 @@ export default function RegisterPage() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+
         gap: '20px',
       }}
     >

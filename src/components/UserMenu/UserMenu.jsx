@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../auth/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-
+import '../UserMenu/UserMenu-module.css';
+import { Button, AppBar } from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
+import { useNavigate } from 'react-router-dom';
 export const UserMenu = () => {
   const [email, setEmail] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
@@ -21,9 +24,15 @@ export const UserMenu = () => {
   };
 
   return (
-    <div>
+    <AppBar
+      position="static"
+      sx={{ display: 'flex', flexDirection: 'row', fontSize: '25px' }}
+    >
+      <PersonIcon sx={{ fontSize: 40, padding: 2 }} />
       {email && <p>{email}</p>}
-      <button onClick={logout}>Logout</button>
-    </div>
+      <Button sx={{ marginLeft: '70%' }} variant="contained" onClick={logout}>
+        Log Out
+      </Button>
+    </AppBar>
   );
 };

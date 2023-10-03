@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, Navigate } from 'react-router-dom';
-import { selectIsAuthenticated } from '../../Redux/selectors';
-import {
-  fetchContacts,
-  addContact,
-  deleteContact,
-} from '../../Redux/Operation';
 
+import { selectIsAuthenticated } from '../../Redux/selectors';
+import { Navigate, Outlet } from 'react-router-dom';
+import { fetchContacts } from 'Redux/Operation';
 export default function PrivateRoutes() {
   const isAuth = useSelector(selectIsAuthenticated);
 
@@ -16,8 +12,6 @@ export default function PrivateRoutes() {
   useEffect(() => {
     if (isAuth) {
       dispatch(fetchContacts());
-      dispatch(addContact());
-      dispatch(deleteContact());
     }
   }, [isAuth, dispatch]);
 

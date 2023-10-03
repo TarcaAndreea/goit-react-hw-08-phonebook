@@ -41,11 +41,9 @@ export default function Loginpage() {
   };
 
   useEffect(() => {
-    if (isAuth) navigate('/UserMenu');
+    if (isAuth) navigate('/contacts');
   }, [isAuth, navigate]);
-  const handleLogoutClick = () => {
-    navigate('/');
-  };
+  
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -97,9 +95,6 @@ export default function Loginpage() {
           </Button>
         </Box>
       </Box>
-      <Typography onClick={handleLogoutClick} sx={{ minWidth: 100 }}>
-        Logout
-      </Typography>
     </Container>
   );
 }
