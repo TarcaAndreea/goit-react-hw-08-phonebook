@@ -46,17 +46,16 @@ export default function RegisterPage() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-
         gap: '20px',
       }}
     >
-      <Typography variant="h4" sx={{ fontSize: '30px', color: 'red' }}>
+      <Typography variant="h4" sx={{ fontSize: '30px', color: 'gray' }}>
         Register
       </Typography>
+
       <TextField
         type="email"
         name="email"
-        id="outlined-basic"
         placeholder="Email"
         variant="outlined"
         fullWidth
@@ -65,7 +64,6 @@ export default function RegisterPage() {
       <TextField
         type="password"
         name="password"
-        id="outlined-basic"
         placeholder="Password"
         variant="outlined"
         fullWidth

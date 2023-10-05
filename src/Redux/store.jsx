@@ -3,7 +3,7 @@ import { contactsReducers } from './ContactSlice';
 import { filterReducer } from './FilterSlice';
 import { userReducer } from './UserSlice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     contacts: contactsReducers,
     filter: filterReducer,
@@ -14,5 +14,3 @@ const store = configureStore({
       serializableCheck: false,
     }),
 });
-
-export { store };

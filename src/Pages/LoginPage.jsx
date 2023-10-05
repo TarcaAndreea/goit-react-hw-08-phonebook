@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom';
 import { selectIsAuthenticated } from 'Redux/selectors';
 
 import { login } from 'Redux/Operation';
-
 export default function Loginpage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,7 +42,7 @@ export default function Loginpage() {
   useEffect(() => {
     if (isAuth) navigate('/contacts');
   }, [isAuth, navigate]);
-  
+
   return (
     <Container component="main" maxWidth="xs">
       <Box

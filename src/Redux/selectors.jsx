@@ -4,6 +4,7 @@ export const getFilter = state => state.filter.filter;
 export const getIsLoading = state => state.contacts.isLoading;
 export const getErorr = state => state.contacts.error;
 export const selectIsAuthenticated = state => state.user.isAuthenticated;
+
 export const getFilterContacts = createSelector(
   [getContacts, getFilter],
   (contacts, filter) => {

@@ -9,6 +9,7 @@ import Loginpage from '../Pages/LoginPage';
 import ContactsPage from '../Pages/ContactsPage';
 import NotFoundPage from '../Pages/NotFoundPage';
 import PrivateRoutes from './Routes/PrivateRoutes';
+import homepag from '../Images/homepag.jpg';
 export const App = () => {
   return (
     <Provider store={store}>
@@ -17,6 +18,11 @@ export const App = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          backgroundImage: `url(${homepag})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          height: '100vh',
         }}
       >
         <Router>

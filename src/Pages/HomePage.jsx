@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import background from '../Images/background.jpg';
+
 export default function HomePage() {
   const navigate = useNavigate();
 
@@ -17,44 +17,27 @@ export default function HomePage() {
     <Container
       sx={{
         display: 'flex',
-        gap: '160px',
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        height: '100vh',
+        gap: '60px',
+        justifyContent: 'flex-end',
       }}
     >
-      <Box>
-        <Typography
-          variant="h1"
-          component="h2"
-          sx={{
-            margin: 'auto',
-            paddingTop: '160px',
-            color: 'gray',
-            paddingLeft: '50px',
-          }}
-        >
-          Welcome!
-        </Typography>{' '}
-      </Box>
       <Box
         sx={{
           display: 'flex',
-
-          gap: '30px',
+          gap: '20px',
         }}
       >
         <Typography
           onClick={handleRegisterClick}
           sx={{
             minWidth: 200,
-            padding: '20px',
+
             height: '50px',
-            fontSize: '40px',
-            color: 'white',
+            fontSize: '30px',
+            color: 'black',
             textAlign: 'center',
+            boxShadow:
+              'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
           }}
         >
           Register
@@ -63,11 +46,13 @@ export default function HomePage() {
           onClick={handleLoginClick}
           sx={{
             minWidth: 200,
-            fontSize: '40px',
+            fontSize: '30px',
             height: '50px',
-            padding: '20px',
-            color: 'white',
+
+            color: 'black',
             textAlign: 'center',
+            boxShadow:
+              'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
           }}
         >
           Log In

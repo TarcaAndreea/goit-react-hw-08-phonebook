@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../auth/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+
 import '../UserMenu/UserMenu-module.css';
-import { Button, AppBar } from '@mui/material';
+import { Button, AppBar, Box } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
-import { useNavigate } from 'react-router-dom';
+
 export const UserMenu = () => {
   const [email, setEmail] = useState(null);
-  const navigate = useNavigate();
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
@@ -26,11 +26,18 @@ export const UserMenu = () => {
   return (
     <AppBar
       position="static"
-      sx={{ display: 'flex', flexDirection: 'row', fontSize: '25px' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        fontSize: '25px',
+        justifyContent: 'space-between',
+      }}
     >
-      <PersonIcon sx={{ fontSize: 40, padding: 2 }} />
-      {email && <p>{email}</p>}
-      <Button sx={{ marginLeft: '70%' }} variant="contained" onClick={logout}>
+      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+        <PersonIcon sx={{ fontSize: 40, padding: 2 }} />
+        {email && <p>{email}</p>}
+      </Box>
+      <Button variant="contained" onClick={logout}>
         Log Out
       </Button>
     </AppBar>
