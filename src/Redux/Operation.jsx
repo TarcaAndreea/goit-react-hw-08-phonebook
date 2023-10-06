@@ -1,19 +1,38 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { contactsApi } from '../components/API/Api';
-import { auth } from 'components/auth/firebase';
 
+import { auth } from 'components/auth/firebase';
+import { dataBase } from 'components/auth/firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
+import {
+  collection,
+  getDoc,
+  addDoc,
+  deleteDoc,
+  getDocs,
+  doc,
+} from 'firebase/firestore';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, thunkAPI) => {
     try {
-      const response = await contactsApi.getAll();
-      return response.data;
+      const currState = thunkAPI.getState();
+      const userId = currState.user.user.uid;
+      const userDocRef = doc(dataBase, 'users', userId);
+      const contactsCollectionRef = collection(userDocRef, 'contacts');
+      const documentsContacts = await getDocs(contactsCollectionRef);
+
+      const contactsData = [];
+      documentsContacts.forEach(doc => {
+        const contactData = doc.data();
+        contactsData.push({ ...contactData, id: doc.id });
+      });
+
+      return contactsData;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -24,9 +43,17 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const response = await contactsApi.create(contact);
-
-      return response.data;
+      const currState = thunkAPI.getState();
+      const userId = currState.user.user.uid;
+      const userDocRef = doc(dataBase, 'users', userId);
+      const contactsCollectionRef = collection(userDocRef, 'contacts');
+      const docRef = await addDoc(contactsCollectionRef, {
+        nume: contact.name,
+        număr: contact.number,
+      });
+      const addedData = (await getDoc(docRef)).data();
+      console.log(addedData);
+      return { id: docRef.id, ...addedData };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -35,10 +62,17 @@ export const addContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (id, thunkAPI) => {
+  async (contactId, thunkAPI) => {
     try {
-      const response = await contactsApi.delete(id);
-      return response.data;
+      const currState = thunkAPI.getState();
+      const userId = currState.user.user.uid;
+      const userDocRef = doc(dataBase, 'users', userId);
+      const contactsCollectionRef = collection(userDocRef, 'contacts');
+      const contactsDocRef = doc(contactsCollectionRef, contactId);
+
+      await deleteDoc(contactsDocRef);
+
+      return contactId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
