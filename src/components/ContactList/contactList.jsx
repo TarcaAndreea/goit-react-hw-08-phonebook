@@ -6,7 +6,7 @@ import { getFilterContacts } from 'Redux/selectors';
 import { fetchContacts } from 'Redux/Operation';
 
 export const ContactList = () => {
-  const contactsExist = useSelector(getFilterContacts);
+  const nameExist = useSelector(getFilterContacts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContacts());
@@ -14,7 +14,7 @@ export const ContactList = () => {
 
   return (
     <ul className="contacts">
-      {contactsExist.map(contact => (
+      {nameExist.map(contact => (
         <ElementList key={contact.id} contact={contact} />
       ))}
     </ul>

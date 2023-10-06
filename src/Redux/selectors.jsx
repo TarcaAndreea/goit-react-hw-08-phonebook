@@ -8,15 +8,18 @@ export const selectIsAuthenticated = state => state.user.isAuthenticated;
 export const getFilterContacts = createSelector(
   [getContacts, getFilter],
   (contacts, filter) => {
-    if (!contacts.length) return [];
+    if (!filter || typeof filter !== 'string') {
+      return contacts;
+    }
 
     const lowercaseFilter = filter.toLowerCase();
+
     return contacts.filter(contact => {
-      if (contact.name && typeof contact.name.name === 'string') {
-        return contact.name.name.toLowerCase().includes(lowercaseFilter);
+      if (typeof contact.name === 'string') {
+        return contact.name.toLowerCase().includes(lowercaseFilter);
       } else {
-        console.error('contact.name.name nu este un șir:', contact);
-        return false;
+        console.error('contact.name is not a string:', contact);
+        return false; // skip this contact
       }
     });
   }

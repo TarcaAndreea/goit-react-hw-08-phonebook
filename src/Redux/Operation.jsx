@@ -49,7 +49,7 @@ export const addContact = createAsyncThunk(
       const contactsCollectionRef = collection(userDocRef, 'contacts');
       const docRef = await addDoc(contactsCollectionRef, {
         nume: contact.name,
-        număr: contact.number,
+        number: contact.number,
       });
       const addedData = (await getDoc(docRef)).data();
       console.log(addedData);

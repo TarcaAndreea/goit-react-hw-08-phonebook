@@ -14,9 +14,7 @@ export const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const contactExists = contacts
-      .map(contact => contact.name.toLowerCase())
-      .includes(name.toLowerCase());
+    const contactExists = contacts.map(contact => contact.name).includes(name);
 
     if (contactExists) {
       alert(`${name} already exists in contacts!`);
