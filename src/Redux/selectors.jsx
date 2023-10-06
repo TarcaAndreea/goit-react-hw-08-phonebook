@@ -16,7 +16,7 @@ export const getFilterContacts = createSelector(
         return contact.name.name.toLowerCase().includes(lowercaseFilter);
       } else {
         console.error('contact.name.name nu este un șir:', contact);
-        return fals;
+        return false;
       }
     });
   }
