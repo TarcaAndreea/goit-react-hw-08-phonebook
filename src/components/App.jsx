@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { store } from 'Redux/store';
@@ -25,17 +25,19 @@ export const App = () => {
           height: '100vh',
         }}
       >
-        <Router>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<Loginpage />} />
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <Router>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/login" element={<Loginpage />} />
 
-            <Route element={<PrivateRoutes />}>
-              <Route path="/contacts" element={<ContactsPage />} />
-            </Route>
-          </Routes>
-        </Router>
+              <Route element={<PrivateRoutes />}>
+                <Route path="/contacts" element={<ContactsPage />} />
+              </Route>
+            </Routes>
+          </Router>
+        </BrowserRouter>
       </div>
     </Provider>
   );
