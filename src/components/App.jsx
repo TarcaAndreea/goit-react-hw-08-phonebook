@@ -7,7 +7,7 @@ import HomePage from '../Pages/HomePage';
 import RegisterPage from '../Pages/RegisterPage';
 import Loginpage from '../Pages/LoginPage';
 import ContactsPage from '../Pages/ContactsPage';
-import NotFoundPage from '../Pages/NotFoundPage';
+
 import PrivateRoutes from './Routes/PrivateRoutes';
 import homepag from '../Images/homepag.jpg';
 export const App = () => {
@@ -34,8 +34,6 @@ export const App = () => {
             <Route element={<PrivateRoutes />}>
               <Route path="/contacts" element={<ContactsPage />} />
             </Route>
-
-            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
       </div>
