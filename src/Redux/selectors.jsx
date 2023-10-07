@@ -19,7 +19,7 @@ export const getFilterContacts = createSelector(
         return contact.name.toLowerCase().includes(lowercaseFilter);
       } else {
         console.error('contact.name is not a string:', contact);
-        return false; // skip this contact
+        return false;
       }
     });
   }

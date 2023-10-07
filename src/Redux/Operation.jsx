@@ -52,7 +52,7 @@ export const addContact = createAsyncThunk(
         number: contact.number,
       });
       const addedData = (await getDoc(docRef)).data();
-      console.log(addedData);
+
       return { id: docRef.id, ...addedData };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

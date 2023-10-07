@@ -7,12 +7,16 @@ export const ElementList = ({ contact }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = () => {
-    dispatch(deleteContact(contact.id));
+    dispatch(deleteContact(contact.Id));
   };
   return (
     <li className="elements">
       {contact.name} : {contact.number}
-      <button className="elements-button" onClick={onDeleteContact}>
+      <button
+        className="elements-button"
+        type="submit"
+        onClick={onDeleteContact}
+      >
         Delete
       </button>
     </li>
